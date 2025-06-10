@@ -9,6 +9,6 @@ export const auth = betterAuth({
     plugins: [expo()],
     trustedOrigins: ["myapp://"],
     database: prismaAdapter(prisma, {
-        provider: "sqlite", // or "mysql", "postgresql", ...etc
+        provider: "postgresql", 
     }),
 });
