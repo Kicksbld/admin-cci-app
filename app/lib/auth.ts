@@ -7,6 +7,9 @@ import { expo } from "@better-auth/expo";
 const prisma = new PrismaClient();
 export const auth = betterAuth({
     plugins: [expo()],
+    emailAndPassword: { 
+        enabled: true, 
+      }, 
     trustedOrigins: ["myapp://"],
     database: prismaAdapter(prisma, {
         provider: "postgresql", 
