@@ -25,8 +25,19 @@ model User {
   sessions      Session[]
   accounts      Account[]
 
+  role       Role?     @default(ELEVE)
+  banned     Boolean?
+  banReason  String?
+  banExpires DateTime?
+
   @@unique([email])
   @@map("user")
+}
+
+enum Role {
+  ADMIN
+  PROF
+  ELEVE
 }
 
 model Session {
@@ -39,6 +50,8 @@ model Session {
   userAgent String?
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  impersonatedBy String?
 
   @@unique([token])
   @@map("session")
